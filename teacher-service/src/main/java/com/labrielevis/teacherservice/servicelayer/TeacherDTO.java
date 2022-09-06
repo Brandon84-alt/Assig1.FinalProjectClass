@@ -20,6 +20,8 @@ public class TeacherDTO {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.teacherId = teacherId;
     }
 
 }
+
