@@ -10,7 +10,7 @@ public class Teacher {
 
     @Id
     private String id;          //private id -from database
-    private Integer teacherId;   //public id -we create
+    private String teacherId;   //public id -we create
     private String firstName;
     private String lastName;
     private String email;
