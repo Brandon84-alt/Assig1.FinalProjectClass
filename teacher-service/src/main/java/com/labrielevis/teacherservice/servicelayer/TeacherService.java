@@ -7,6 +7,8 @@ public interface TeacherService {
 
     Flux<TeacherDTO> getAll();
 
+    Mono<TeacherDTO> getTeacherByTeacherIdString(String teacherIdString);
+
     Mono<TeacherDTO> insertTeacher(Mono<TeacherDTO> teacherDTOMono);
 
     Mono<TeacherDTO> updateTeacher(String teacherIdString, Mono<TeacherDTO> TeacherDTOMono);

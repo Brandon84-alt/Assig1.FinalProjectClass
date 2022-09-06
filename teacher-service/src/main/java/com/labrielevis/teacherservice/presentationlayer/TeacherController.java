@@ -38,4 +38,11 @@ public class TeacherController {
     public Mono<Void> deleteTeacher(@PathVariable String TeacherIdString) {
         return teacherService.deleteTeacherByTeacherIDString(TeacherIdString);
     }
+
+    @GetMapping("{TeacherIdString}")
+    public Mono<ResponseEntity<TeacherDTO>> getTeacherByTeacherId(@PathVariable String TeacherIdString) {
+        return teacherService.getTeacherByTeacherIdString(TeacherIdString)
+                .map(ResponseEntity::ok)
+                .defaultIfEmpty(ResponseEntity.notFound().build());
+    }
 }

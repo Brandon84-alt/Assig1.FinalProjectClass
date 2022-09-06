@@ -20,6 +20,12 @@ public class TeacherServiceImpl implements TeacherService{
     }
 
     @Override
+    public Mono<TeacherDTO> getTeacherByTeacherIdString(String teacherIdString) {
+        return repo.findTeacherByTeacherId(teacherIdString)
+                .map(EntityDtoUtil::toDTO);
+    }
+
+    @Override
     public Mono<TeacherDTO> insertTeacher(Mono<TeacherDTO> teacherDTOMono) {
         return teacherDTOMono
                 .map(EntityDtoUtil::toEntity)
