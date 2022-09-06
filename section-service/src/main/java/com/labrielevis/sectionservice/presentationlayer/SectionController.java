@@ -24,23 +24,23 @@ public class SectionController {
         return sectionService.insertSection(sectionDTOMono);
     }
 
-    @PutMapping("{SectionUUIDString}")
-    public Mono<ResponseEntity<SectionDTO>> updateSectionBySectionUUIDString(@PathVariable String SectionUUIDString,
+    @PutMapping("{SectionIdString}")
+    public Mono<ResponseEntity<SectionDTO>> updateSectionBySectionIdString(@PathVariable String SectionIdString,
                                                                              @RequestBody Mono<SectionDTO> sectionDTOMono){
-        return sectionService.updateSection(SectionUUIDString, sectionDTOMono)
+        return sectionService.updateSection(SectionIdString, sectionDTOMono)
                 .map(ResponseEntity::ok)
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
 
-    @GetMapping("{sectionUUIDString}")
-    public Mono<ResponseEntity<SectionDTO>> getSectionBySectionUUID(@PathVariable String sectionUUIDString){
-        return sectionService.getSectionBySectionId(sectionUUIDString)
+    @GetMapping("{SectionIdString}")
+    public Mono<ResponseEntity<SectionDTO>> getSectionBySectionId(@PathVariable String SectionIdString){
+        return sectionService.getSectionBySectionId(SectionIdString)
                 .map(ResponseEntity::ok)
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
 
-    @DeleteMapping("{sectionUUIDString}")
-    public Mono<Void> deleteProduct(@PathVariable String sectionUUIDString){
-        return sectionService.deleteSection(sectionUUIDString);
+    @DeleteMapping("{SectionIdString}")
+    public Mono<Void> deleteProduct(@PathVariable String SectionIdString){
+        return sectionService.deleteSection(SectionIdString);
     }
 }
