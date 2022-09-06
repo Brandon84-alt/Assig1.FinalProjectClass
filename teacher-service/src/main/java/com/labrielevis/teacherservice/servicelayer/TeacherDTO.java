@@ -9,16 +9,19 @@ import lombok.ToString;
 @NoArgsConstructor
 public class TeacherDTO {
 
-    private String teacherId; //public id - we create
+    private Integer teacherId; //public id - we create
     private String firstName;
     private String lastName;
     private String email;
 
-    public TeacherDTO(String firstName, String lastName, String email){
+
+    public TeacherDTO(String firstName, String lastName, String email, Integer teacherId){
 
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.teacherId = teacherId;
     }
 
 }
+
