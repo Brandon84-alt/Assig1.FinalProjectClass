@@ -7,7 +7,7 @@ import reactor.core.publisher.Mono;
 @Repository
 public interface SectionRepository extends ReactiveMongoRepository<Section, String> {
 
-    Mono<Section> findSectionBySectionId(String SectioniDString);
-   // Mono<Void> deleteSectionBySectionId(String SectionIdString);
+    Mono<Section> findSectionBySectionId(String SectionUUIDString);
+    Mono<Void> deleteSectionBySectionUUID(String SectionUUIDString);
 
 }

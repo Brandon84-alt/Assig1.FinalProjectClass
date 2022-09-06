@@ -31,8 +31,8 @@ public class SectionServiceImpl implements SectionService {
 
 
     @Override
-    public Mono<SectionDTO> updateSection(String sectionIdString, Mono<SectionDTO> sectionDTOMono) {
-        repository.findSectionBySectionId(sectionIdString)
+    public Mono<SectionDTO> updateSection(String sectionUUIDString, Mono<SectionDTO> sectionDTOMono) {
+        repository.findSectionBySectionId(sectionUUIDString)
                 .flatMap(p -> sectionDTOMono
                         .map(EntityDtoUtil::toEntity)
                         .doOnNext(e -> e.setSectionId(p.getSectionId()))
@@ -42,9 +42,14 @@ public class SectionServiceImpl implements SectionService {
                 .map(EntityDtoUtil::toDTO);
         return sectionDTOMono;
     }
-   /*@Override
-    public Mono<SectionDTO> getSectionBySectionId(String sectionIdString) {
-        return repository.findSectionBySectionId(sectionIdString)
+   @Override
+    public Mono<SectionDTO> getSectionBySectionId(String sectionUUIDString) {
+        return repository.findSectionBySectionId(sectionUUIDString)
                 .map(EntityDtoUtil::toDTO);
-    }*/
+    }
+
+    @Override
+    public Mono<Void> deleteSection(String sectionUUIDString) {
+        return repository.deleteSectionBySectionUUID(sectionUUIDString);
+    }
 }
