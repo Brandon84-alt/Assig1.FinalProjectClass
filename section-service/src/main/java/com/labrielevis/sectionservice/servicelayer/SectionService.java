@@ -7,4 +7,8 @@ public interface SectionService {
     Flux<SectionDTO> getAll();
 
     Mono<SectionDTO> insertSection(Mono<SectionDTO> sectionDTOMono);
+
+    Mono<SectionDTO> updateSection(String sectionIdString, Mono<SectionDTO> SectionDTOMono);
+
+
 }
