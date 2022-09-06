@@ -20,7 +20,7 @@ public class EntityDtoUtil {
         return teacher;
     }
 
-    public static String generateSecIdString() {
+    public static String generateTeacherIdString() {
         return UUID.randomUUID().toString();
     }
 

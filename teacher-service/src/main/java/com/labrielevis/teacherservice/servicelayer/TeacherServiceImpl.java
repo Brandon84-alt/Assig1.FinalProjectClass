@@ -23,7 +23,7 @@ public class TeacherServiceImpl implements TeacherService{
     public Mono<TeacherDTO> insertTeacher(Mono<TeacherDTO> teacherDTOMono) {
         return teacherDTOMono
                 .map(EntityDtoUtil::toEntity)
-                .doOnNext(e -> e.setTeacherId(EntityDtoUtil.generateSecIdString()))
+                .doOnNext(e -> e.setTeacherId(EntityDtoUtil.generateTeacherIdString()))
                 .flatMap(repo::insert)
                 .map(EntityDtoUtil::toDTO);
     }

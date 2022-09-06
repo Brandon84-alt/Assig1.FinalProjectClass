@@ -33,4 +33,9 @@ public class TeacherController {
                 .map(ResponseEntity::ok)
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
+
+    @DeleteMapping("{TeacherIdString}")
+    public Mono<Void> deleteTeacher(@PathVariable String TeacherIdString) {
+        return teacherService.deleteTeacherByTeacherIDString(TeacherIdString);
+    }
 }
