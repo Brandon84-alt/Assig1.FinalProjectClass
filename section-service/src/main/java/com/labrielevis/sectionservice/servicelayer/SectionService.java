@@ -8,7 +8,10 @@ public interface SectionService {
 
     Mono<SectionDTO> insertSection(Mono<SectionDTO> sectionDTOMono);
 
-    Mono<SectionDTO> updateSection(String sectionIdString, Mono<SectionDTO> SectionDTOMono);
+    Mono<SectionDTO> updateSection(String sectionUUIDString, Mono<SectionDTO> SectionDTOMono);
 
+    Mono<SectionDTO> getSectionBySectionId(String sectionUUIDString);
+
+    Mono<Void> deleteSection(String sectionUUIDString);
 
 }

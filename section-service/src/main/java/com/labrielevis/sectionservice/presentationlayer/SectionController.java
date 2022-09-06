@@ -24,11 +24,23 @@ public class SectionController {
         return sectionService.insertSection(sectionDTOMono);
     }
 
-    @PutMapping("{SectionIdString}")
-    public Mono<ResponseEntity<SectionDTO>> updateSectionBySectionIdString(@PathVariable String sectionIdString,
+    @PutMapping("{SectionUUIDString}")
+    public Mono<ResponseEntity<SectionDTO>> updateSectionBySectionUUIDString(@PathVariable String SectionUUIDString,
                                                                              @RequestBody Mono<SectionDTO> sectionDTOMono){
-        return sectionService.updateSection(sectionIdString, sectionDTOMono)
+        return sectionService.updateSection(SectionUUIDString, sectionDTOMono)
                 .map(ResponseEntity::ok)
                 .defaultIfEmpty(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("{sectionUUIDString}")
+    public Mono<ResponseEntity<SectionDTO>> getSectionBySectionUUID(@PathVariable String sectionUUIDString){
+        return sectionService.getSectionBySectionId(sectionUUIDString)
+                .map(ResponseEntity::ok)
+                .defaultIfEmpty(ResponseEntity.notFound().build());
+    }
+
+    @DeleteMapping("{sectionUUIDString}")
+    public Mono<Void> deleteProduct(@PathVariable String sectionUUIDString){
+        return sectionService.deleteSection(sectionUUIDString);
     }
 }
