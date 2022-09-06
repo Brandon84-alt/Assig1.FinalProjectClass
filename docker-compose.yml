@@ -13,6 +13,8 @@ services:
   section-service:
     build:   section-service
     hostname: section-service
+    ports:
+      - "8082:8080"
     environment:
       - SPRING_PROFILES_ACTIVE=docker
     depends_on:
@@ -21,6 +23,8 @@ services:
   teacher-service:
     build:   teacher-service
     hostname:   teacher-service
+    ports:
+      - "8083:8080"
     environment:
       - SPRING_PROFILES_ACTIVE=docker
     depends_on:
@@ -55,6 +59,5 @@ services:
       - 8081:8081
     depends_on:
       - mongo
-      - api-gateway
       - section-service
       - teacher-service
