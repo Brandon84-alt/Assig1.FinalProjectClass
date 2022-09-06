@@ -19,7 +19,7 @@ public class SectionController {
         return sectionService.getAll();
     }
 
-    @GetMapping()
+    @PostMapping()
     public Mono<SectionDTO> insertSection(@RequestBody Mono<SectionDTO> sectionDTOMono){
         return sectionService.insertSection(sectionDTOMono);
     }
