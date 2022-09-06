@@ -11,4 +11,6 @@ public interface TeacherService {
 
     Mono<TeacherDTO> updateTeacher(String teacherIdString, Mono<TeacherDTO> TeacherDTOMono);
 
+    Mono<Void> deleteTeacherByTeacherIDString(String teacherIDString);
+
 }

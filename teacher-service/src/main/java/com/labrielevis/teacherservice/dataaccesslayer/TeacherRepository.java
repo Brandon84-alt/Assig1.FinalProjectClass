@@ -9,4 +9,6 @@ public interface TeacherRepository extends ReactiveMongoRepository<Teacher, Stri
 
     Mono<Teacher> findTeacherByTeacherId(String TeacherIdString);
 
+    Mono<Void> deleteTeacherByTeacherId(String TeacherIdString);
+
 }
