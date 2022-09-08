@@ -16,8 +16,4 @@ public interface TeacherSummaryMapper {
 
     })
     public TeacherDetails summaryModelToResponseModel(TeacherSummaryModel summaryModel);
-
-    public List<TeacherSummaryModel> responseModelListToSummaryModelList(List<TeacherDetails> responseModels);
-
-    public List<TeacherDetails> summaryModelListToResponseModelList(List<TeacherSummaryModel> summaryModels);
 }

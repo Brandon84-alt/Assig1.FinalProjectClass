@@ -14,9 +14,5 @@ public interface SectionSummaryMapper {
             @Mapping(target = "sectionId", ignore = true)
     })
     public SectionDetails summaryModelToResponseModel(SectionSummaryModel summaryModel);
-
-    public List<SectionSummaryModel> responseModelListToSummaryModelList(List<SectionDetails> responseModels);
-
-    public List<SectionDetails> summaryModelListToResponseModelList(List<SectionSummaryModel> summaryModels);
 }
 
