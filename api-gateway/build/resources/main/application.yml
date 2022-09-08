@@ -1,0 +1,44 @@
+server:
+  error:
+    include-message:
+      always
+
+logging:
+  level:
+    root:
+      INFO
+    com.jin:
+      DEBUG
+
+app:
+  section-service:
+    host:
+      localhost
+    port:
+      7001
+  teacher-service:
+    host:
+      localhost
+    port:
+      7002
+
+---
+spring:
+  config:
+    activate:
+      on-profile:
+        docker
+server:
+  port: 8080
+
+app:
+  student-service:
+    host:
+      section-service
+    port:
+      8080
+  teacher-service:
+    host:
+      teacher-service
+    port:
+      8080
