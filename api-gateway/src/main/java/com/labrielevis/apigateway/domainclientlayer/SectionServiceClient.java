@@ -33,7 +33,7 @@ public class SectionServiceClient {
                                 @Value("section-service") String sectionServiceHost){
         this.webClientBuilder = webClientBuilder;
         this.mapper = mapper;
-        this.sectionServiceUrl = "https://" + sectionServiceHost + ":" + sectionServicePort;
+        this.sectionServiceUrl = "http://" + sectionServiceHost + ":" + sectionServicePort;
     }
 
 
