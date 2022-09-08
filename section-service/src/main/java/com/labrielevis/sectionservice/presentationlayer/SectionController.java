@@ -40,7 +40,7 @@ public class SectionController {
     }
 
     @DeleteMapping("{SectionIdString}")
-    public Mono<Void> deleteProduct(@PathVariable String SectionIdString){
+    public Mono<Void> deleteSection(@PathVariable String SectionIdString){
         return sectionService.deleteSection(SectionIdString);
     }
 }

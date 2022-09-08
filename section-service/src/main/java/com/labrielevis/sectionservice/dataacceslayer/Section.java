@@ -10,7 +10,7 @@ public class Section {
 
     @Id
     private String id;          //private id -from database
-    private String sectionId;   //public id -we create
+    private Integer sectionId;   //public id -we create
     private Integer courseNumber;
     private Integer roomNumber;
     private Integer teacherId;

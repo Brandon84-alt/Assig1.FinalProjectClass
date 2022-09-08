@@ -14,13 +14,15 @@ public class TeacherDTO {
     private String lastName;
     private String email;
 
+    private Integer sectionId;
 
-    public TeacherDTO(String firstName, String lastName, String email, Integer teacherId){
+
+    public TeacherDTO(String firstName, String lastName, String email,Integer sectionId){
 
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.teacherId = teacherId;
+        this.sectionId = sectionId;
     }
 
 }

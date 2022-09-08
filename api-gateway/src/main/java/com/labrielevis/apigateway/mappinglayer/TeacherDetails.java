@@ -15,9 +15,12 @@ public class TeacherDetails {
     private String lastName;
     private String email;
 
-    public TeacherDetails(String firstName, String lastName, String email){
+    private String section;
+
+    public TeacherDetails(String firstName, String lastName, String email, String section){
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.section = section;
     }
 }
