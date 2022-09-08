@@ -15,12 +15,13 @@ public class TeacherDetails {
     private String lastName;
     private String email;
 
-    private String section;
+    private String sectionId;
 
-    public TeacherDetails(String firstName, String lastName, String email, String section){
+    /*public TeacherDetails(String teacherId, firstName, String lastName, String email, String section){
+        this.teacherId = teacherId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.section = section;
-    }
+    }*/
 }

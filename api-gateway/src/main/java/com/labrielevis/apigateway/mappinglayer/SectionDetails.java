@@ -16,9 +16,9 @@ public class SectionDetails {
     private Integer roomNumber;
     private Integer teacherId;
 
-    public SectionDetails(Integer courseNumber, Integer roomNumber, Integer teacherId){
+    /*public SectionDetails(Integer courseNumber, Integer roomNumber, Integer teacherId){
         this.courseNumber = courseNumber;
         this.roomNumber = roomNumber;
         this.teacherId = teacherId;
-    }
+    }*/
 }

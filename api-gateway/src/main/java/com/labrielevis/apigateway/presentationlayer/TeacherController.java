@@ -37,7 +37,7 @@ public class TeacherController {
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
 
-    @PostMapping
+    @PostMapping()
     public Mono<TeacherSummaryModel> insertTeacher(@RequestBody TeacherDetails teacherDTO) {
         return teacherService.insertTeacher(Mono.just(teacherDTO));
     }

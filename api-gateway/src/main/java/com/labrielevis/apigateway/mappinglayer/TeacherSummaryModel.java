@@ -10,4 +10,5 @@ import lombok.Setter;
 public class TeacherSummaryModel {
     private String firstName;
     private String lastName;
+    private String email;
 }

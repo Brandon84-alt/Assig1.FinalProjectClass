@@ -21,7 +21,7 @@ public class SectionController {
         return sectionService.getAll();
     }
 
-    @GetMapping("{sectionId}")
+    @GetMapping("/{sectionId}")
     public Mono<ResponseEntity<SectionSummaryModel>> getSectionBySectionId(@PathVariable String sectionId) {
         return sectionService.getSectionBySectionId(sectionId)
                 .map(ResponseEntity::ok)
@@ -36,7 +36,7 @@ public class SectionController {
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
 
-    @PostMapping
+    @PostMapping()
     public Mono<SectionSummaryModel> insertSection(@RequestBody SectionDetails sectionDetails) {
         return sectionService.insertSection(Mono.just(sectionDetails));
     }

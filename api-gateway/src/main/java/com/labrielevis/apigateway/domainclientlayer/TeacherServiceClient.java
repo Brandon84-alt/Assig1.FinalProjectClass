@@ -44,6 +44,7 @@ public class TeacherServiceClient {
                     .uri(requestUrl)
                     .retrieve()
                     .bodyToFlux(TeacherDetails.class);
+            //DoOnError-> catch exception
         }
 
         catch (HttpClientErrorException e){
