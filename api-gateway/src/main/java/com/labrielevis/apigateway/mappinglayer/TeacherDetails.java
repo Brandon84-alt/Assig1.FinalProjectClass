@@ -17,11 +17,11 @@ public class TeacherDetails {
 
     private String sectionId;
 
-    /*public TeacherDetails(String teacherId, firstName, String lastName, String email, String section){
+    public TeacherDetails(String teacherId, String firstName, String lastName, String email, String section){
         this.teacherId = teacherId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.section = section;
-    }*/
+        this.sectionId = section;
+    }
 }

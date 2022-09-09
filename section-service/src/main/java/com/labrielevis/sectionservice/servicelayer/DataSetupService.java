@@ -13,11 +13,11 @@ public class    DataSetupService implements CommandLineRunner {
     private SectionService sectionService;
     @Override
     public void run(String... args) throws Exception{
-        SectionDTO s1 = new SectionDTO(100,201);
-        SectionDTO s2 = new SectionDTO(101,202);
-        SectionDTO s3 = new SectionDTO(102,203);
-        SectionDTO s4 = new SectionDTO(103,204);
-        SectionDTO s5 = new SectionDTO(104,205);
+        SectionDTO s1 = new SectionDTO(100,201,"1");
+        SectionDTO s2 = new SectionDTO(101,202,"2");
+        SectionDTO s3 = new SectionDTO(102,203,"3");
+        SectionDTO s4 = new SectionDTO(103,204,"4");
+        SectionDTO s5 = new SectionDTO(104,205, "5");
 
         Flux.just(s1, s2, s3, s4, s5)
                 .flatMap(p -> sectionService.insertSection(Mono.just(p))
