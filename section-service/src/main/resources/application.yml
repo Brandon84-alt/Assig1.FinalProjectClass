@@ -4,7 +4,7 @@ server:
 logging:
   level:
     root: INFO
-    com.gerard: DEBUG
+    com.com.labrielevis: DEBUG
 
 spring:
   config:
@@ -16,9 +16,9 @@ spring:
       host: localhost
       port: 27017
       database: college
-      username: root
-      password: password
-      authentication-database: admin
+  mongodb:
+      embedded:
+        version: 4.0.21
 
 ---
 spring:
