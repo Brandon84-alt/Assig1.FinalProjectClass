@@ -1,11 +1,13 @@
 package com.labrielevis.sectionservice.dataacceslayer;
 
-import lombok.Data;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 
 @Data
 @ToString
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Section {
 
     @Id
@@ -13,6 +15,6 @@ public class Section {
     private String sectionId;   //public id -we create
     private Integer courseNumber;
     private Integer roomNumber;
-    private Integer teacherId;
+    private String teacherId;
 
 }

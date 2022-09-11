@@ -9,7 +9,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping("section")
+@RequestMapping("sections")
 public class SectionController {
     @Autowired
     private SectionService sectionService;
@@ -40,7 +40,7 @@ public class SectionController {
     }
 
     @DeleteMapping("{SectionIdString}")
-    public Mono<Void> deleteProduct(@PathVariable String SectionIdString){
+    public Mono<Void> deleteSection(@PathVariable String SectionIdString){
         return sectionService.deleteSection(SectionIdString);
     }
 }
