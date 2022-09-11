@@ -1,19 +1,18 @@
 package com.labrielevis.teacherservice.servicelayer;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 @Data
 @ToString
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class TeacherDTO {
 
     private String teacherId; //public id - we create
     private String firstName;
     private String lastName;
     private String email;
-
     private String sectionId;
 
 

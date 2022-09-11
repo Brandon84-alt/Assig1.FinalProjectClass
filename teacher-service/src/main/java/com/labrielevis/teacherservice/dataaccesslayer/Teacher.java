@@ -1,11 +1,13 @@
 package com.labrielevis.teacherservice.dataaccesslayer;
 
-import lombok.Data;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 
 @Data
 @ToString
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Teacher {
 
     @Id
