@@ -12,6 +12,8 @@ public interface SectionService {
 
     Mono<SectionDTO> getSectionBySectionId(String sectionIdString);
 
+    Flux<SectionDTO> getSectionByCourseNumber(Integer courseNumber);
+
     Mono<Void> deleteSection(String sectionIdString);
 
 }
