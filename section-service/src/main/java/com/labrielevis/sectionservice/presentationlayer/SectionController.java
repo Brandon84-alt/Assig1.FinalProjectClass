@@ -39,6 +39,23 @@ public class SectionController {
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/courseNumber/{courseNumber}")
+    public Flux<SectionDTO> getSectionByCourseNumber(@PathVariable Integer courseNumber) {
+        return sectionService.getSectionByCourseNumber(courseNumber);
+    }
+
+    @GetMapping("/roomNumber/{roomNumber}")
+    public Flux<SectionDTO> getSectionsByRoomNumber(@PathVariable Integer roomNumber) {
+        return sectionService.getSectionsByRoomNumber(roomNumber);
+    }
+
+    @GetMapping("/teacherId/{teacherId}")
+    public Flux<SectionDTO> getSectionsByTeacherId(@PathVariable String teacherId) {
+        return sectionService.getSectionsByTeacherId(teacherId);
+    }
+
+
+
     @DeleteMapping("{SectionIdString}")
     public Mono<Void> deleteSection(@PathVariable String SectionIdString){
         return sectionService.deleteSection(SectionIdString);

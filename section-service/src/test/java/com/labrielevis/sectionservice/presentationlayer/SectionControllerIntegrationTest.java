@@ -2,7 +2,6 @@ package com.labrielevis.sectionservice.presentationlayer;
 
 import com.labrielevis.sectionservice.dataacceslayer.Section;
 import com.labrielevis.sectionservice.dataacceslayer.SectionRepository;
-
 import org.junit.jupiter.api.Test;
 import org.reactivestreams.Publisher;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,39 +15,33 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 
 @SpringBootTest(webEnvironment = RANDOM_PORT, properties = {"spring.data.mongodb.port: 27017"})
 @AutoConfigureWebTestClient
-
-class ProductControllerIntegrationTest {
-
-    private final Section dto = buildSection();
-    private final String SECTION_ID_OKAY_UUID = dto.getSectionId();
+class SectionControllerIntegrationTest {
+    private final Section section = buildSection();
+    private final String Section_ID_OKAY_UUID = section.getSectionId();
     @Autowired
     private WebTestClient client;
-
     @Autowired
-    private SectionRepository repository;
-
+    private SectionRepository sectionRepository;
     @Test
-    void whenSectionIdIsValid_returnDetailsOfASection()  {
-    //arrange
-       Publisher<Section> setup = repository.deleteAll().thenMany(repository.save(dto));
-    //act & assert
+    void whenProductUUIDIsValid_returnDetailsOfAProduct() {
+//arrange
+        Publisher<Section> setup = sectionRepository.deleteAll().thenMany(sectionRepository.save(section));
         StepVerifier
                 .create(setup)
                 .expectNextCount(1)
                 .verifyComplete();
-
+//act and assert
         client
                 .get()
-                .uri("/sections/" + SECTION_ID_OKAY_UUID)
+                .uri("/sections/" + Section_ID_OKAY_UUID)
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
                 .expectStatus().isOk()
                 .expectHeader().contentType(MediaType.APPLICATION_JSON)
 
                 .expectBody()
-                .jsonPath("$.sectionId").isEqualTo(dto.getSectionId())
-                .jsonPath("$.courseNumber").isEqualTo(dto.getCourseNumber())
-                .jsonPath("$.roomNumber").isEqualTo(dto.getRoomNumber());
+                .jsonPath("$.courseNumber").isEqualTo(section.getCourseNumber())
+                .jsonPath("$.roomNumber").isEqualTo(section.getRoomNumber());
     }
     private Section buildSection() {
         return Section.builder()

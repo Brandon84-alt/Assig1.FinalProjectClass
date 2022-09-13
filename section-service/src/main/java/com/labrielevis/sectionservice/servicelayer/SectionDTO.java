@@ -1,11 +1,12 @@
 package com.labrielevis.sectionservice.servicelayer;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
+
 
 @Data
 @ToString
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor
 public class SectionDTO {
 
