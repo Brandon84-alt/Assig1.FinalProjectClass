@@ -44,6 +44,16 @@ public class SectionController {
         return sectionService.getSectionByCourseNumber(courseNumber);
     }
 
+    @GetMapping("/roomNumber/{roomNumber}")
+    public Flux<SectionDTO> getSectionsByRoomNumber(@PathVariable Integer roomNumber) {
+        return sectionService.getSectionsByRoomNumber(roomNumber);
+    }
+
+    @GetMapping("/teacherId/{teacherId}")
+    public Flux<SectionDTO> getSectionsByTeacherId(@PathVariable String teacherId) {
+        return sectionService.getSectionsByTeacherId(teacherId);
+    }
+
 
 
     @DeleteMapping("{SectionIdString}")

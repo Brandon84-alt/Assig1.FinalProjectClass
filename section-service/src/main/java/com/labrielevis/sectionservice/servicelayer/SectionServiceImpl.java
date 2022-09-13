@@ -55,6 +55,17 @@ public class SectionServiceImpl implements SectionService {
                 .map(EntityDtoUtil::toDTO);
     }
 
+    @Override
+    public Flux<SectionDTO> getSectionsByRoomNumber(Integer roomNumber) {
+        return repository.findSectionsByRoomNumber(roomNumber)
+                .map(EntityDtoUtil::toDTO);
+    }
+
+    @Override
+    public Flux<SectionDTO> getSectionsByTeacherId(String teacherId) {
+        return repository.findSectionsByTeacherId(teacherId)
+                .map(EntityDtoUtil::toDTO);
+    }
 
     @Override
     public Mono<Void> deleteSection(String sectionIdString) {
