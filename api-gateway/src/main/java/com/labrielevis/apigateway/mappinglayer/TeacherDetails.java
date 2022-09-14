@@ -1,13 +1,13 @@
 package com.labrielevis.apigateway.mappinglayer;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 
 @Data
 @ToString
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class TeacherDetails {
 
     private String teacherId;   //public id -we create
@@ -17,11 +17,11 @@ public class TeacherDetails {
 
     private String sectionId;
 
-    public TeacherDetails(String teacherId, String firstName, String lastName, String email, String section){
+    /*public TeacherDetails(String teacherId, String firstName, String lastName, String email, String section){
         this.teacherId = teacherId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.sectionId = section;
-    }
+    }*/
 }

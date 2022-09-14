@@ -23,7 +23,7 @@ class SectionControllerIntegrationTest {
     @Autowired
     private SectionRepository sectionRepository;
     @Test
-    void whenProductUUIDIsValid_returnDetailsOfAProduct() {
+    void whenSectionIdIsValid_returnDetailsOfASection() {
 //arrange
         Publisher<Section> setup = sectionRepository.deleteAll().thenMany(sectionRepository.save(section));
         StepVerifier
@@ -40,6 +40,7 @@ class SectionControllerIntegrationTest {
                 .expectHeader().contentType(MediaType.APPLICATION_JSON)
 
                 .expectBody()
+                .jsonPath("$.sectionId").isEqualTo(section.getSectionId())
                 .jsonPath("$.courseNumber").isEqualTo(section.getCourseNumber())
                 .jsonPath("$.roomNumber").isEqualTo(section.getRoomNumber());
     }
