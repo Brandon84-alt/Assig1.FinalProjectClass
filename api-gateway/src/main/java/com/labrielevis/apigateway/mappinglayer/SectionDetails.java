@@ -1,14 +1,14 @@
 package com.labrielevis.apigateway.mappinglayer;
 
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 
 @Data
 @ToString
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class SectionDetails {
 
     private String sectionId;   //public id -we create

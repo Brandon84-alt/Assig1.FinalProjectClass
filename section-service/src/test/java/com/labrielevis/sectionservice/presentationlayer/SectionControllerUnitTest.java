@@ -5,8 +5,7 @@ import com.labrielevis.sectionservice.servicelayer.SectionService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.reactive.server.WebTestClient;
@@ -15,28 +14,26 @@ import reactor.core.publisher.Mono;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.when;
-import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
-@SpringBootTest(webEnvironment = RANDOM_PORT, properties = {"spring.data.mongodb.port: 27017"})
-@AutoConfigureWebTestClient
-
+@WebFluxTest(controllers = SectionController.class)
+//brandon
 class SectionControllerUnitTest {
 
     private final SectionDTO section = buildSection();
     private final String SECTION_ID_OKAY_UUID = section.getSectionId();
 
-    private final Integer SECTION_ROOMNUMBER_OKAY = section.getRoomNumber();
+    //private final Integer SECTION_ROOMNUMBER_OKAY = section.getRoomNumber();
     @Autowired
     private WebTestClient client;
 
     @MockBean
-    private SectionService sectionService;
+    SectionService sectionService;
 
     @Test
     void getSectionBySectionId()  {
         //arrange
-        when(sectionService.getSectionBySectionId(anyString())
-                .thenReturn(Mono.just(section)));
+        when(sectionService.getSectionBySectionId(anyString()))
+                .thenReturn(Mono.just(section));
         // Publisher<Section> setup = repository.deleteAll().thenMany(repository.save(dto));
         // act & assert
         /* StepVerifier
@@ -59,7 +56,7 @@ class SectionControllerUnitTest {
         Mockito.verify(sectionService, times(1))
                 .getSectionBySectionId(SECTION_ID_OKAY_UUID);
 
-    }
+        }
     private SectionDTO buildSection() {
         return SectionDTO.builder()
                 .sectionId("48b0f8c1-c341-4130-b945-463b43cfc9de")
