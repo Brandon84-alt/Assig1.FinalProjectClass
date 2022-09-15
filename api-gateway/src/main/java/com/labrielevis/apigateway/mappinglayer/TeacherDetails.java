@@ -1,13 +1,12 @@
 package com.labrielevis.apigateway.mappinglayer;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 
 @Data
 @ToString
 @NoArgsConstructor
+@Builder
 public class TeacherDetails {
 
     private String teacherId;   //public id -we create

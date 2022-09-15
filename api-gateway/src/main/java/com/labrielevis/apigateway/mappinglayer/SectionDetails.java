@@ -1,14 +1,13 @@
 package com.labrielevis.apigateway.mappinglayer;
 
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 
 @Data
 @ToString
 @NoArgsConstructor
+@Builder
 public class SectionDetails {
 
     private String sectionId;   //public id -we create
@@ -16,7 +15,8 @@ public class SectionDetails {
     private Integer roomNumber;
     private Integer teacherId;
 
-    public SectionDetails(Integer courseNumber, Integer roomNumber, Integer teacherId){
+    public SectionDetails(String sectionId, Integer courseNumber, Integer roomNumber, Integer teacherId){
+        this.sectionId = sectionId;
         this.courseNumber = courseNumber;
         this.roomNumber = roomNumber;
         this.teacherId = teacherId;

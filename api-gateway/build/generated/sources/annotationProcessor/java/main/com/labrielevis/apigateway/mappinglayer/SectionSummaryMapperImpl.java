@@ -1,14 +1,12 @@
 package com.labrielevis.apigateway.mappinglayer;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-09-08T00:02:54-0400",
-    comments = "version: 1.5.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.5.jar, environment: Java 17.0.4.1 (Amazon.com Inc.)"
+    date = "2022-09-15T02:18:34-0400",
+    comments = "version: 1.5.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.5.jar, environment: Java 17.0.2 (Oracle Corporation)"
 )
 @Component
 public class SectionSummaryMapperImpl implements SectionSummaryMapper {
@@ -33,39 +31,11 @@ public class SectionSummaryMapperImpl implements SectionSummaryMapper {
             return null;
         }
 
-        SectionDetails sectionDetails = new SectionDetails();
+        SectionDetails.SectionDetailsBuilder sectionDetails = SectionDetails.builder();
 
-        sectionDetails.setCourseNumber( summaryModel.getCourseNumber() );
-        sectionDetails.setRoomNumber( summaryModel.getRoomNumber() );
+        sectionDetails.courseNumber( summaryModel.getCourseNumber() );
+        sectionDetails.roomNumber( summaryModel.getRoomNumber() );
 
-        return sectionDetails;
-    }
-
-    @Override
-    public List<SectionSummaryModel> responseModelListToSummaryModelList(List<SectionDetails> responseModels) {
-        if ( responseModels == null ) {
-            return null;
-        }
-
-        List<SectionSummaryModel> list = new ArrayList<SectionSummaryModel>( responseModels.size() );
-        for ( SectionDetails sectionDetails : responseModels ) {
-            list.add( responseModelToSummaryModel( sectionDetails ) );
-        }
-
-        return list;
-    }
-
-    @Override
-    public List<SectionDetails> summaryModelListToResponseModelList(List<SectionSummaryModel> summaryModels) {
-        if ( summaryModels == null ) {
-            return null;
-        }
-
-        List<SectionDetails> list = new ArrayList<SectionDetails>( summaryModels.size() );
-        for ( SectionSummaryModel sectionSummaryModel : summaryModels ) {
-            list.add( summaryModelToResponseModel( sectionSummaryModel ) );
-        }
-
-        return list;
+        return sectionDetails.build();
     }
 }
