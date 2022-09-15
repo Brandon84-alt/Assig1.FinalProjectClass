@@ -2,8 +2,8 @@ package com.labrielevis.apigateway.presentationlayer;
 
 import com.labrielevis.apigateway.domainclientlayer.SectionServiceClient;
 import com.labrielevis.apigateway.mappinglayer.SectionDetails;
+import com.labrielevis.apigateway.mappinglayer.SectionSummaryModel;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,50 +12,61 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Mono;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.when;
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
-@SpringBootTest
+@SpringBootTest(webEnvironment = RANDOM_PORT)
 @AutoConfigureWebTestClient
-//brandon
-class SectionControllerTest {
+class SectionControllerIntegrationTest {
+
+    private final SectionDetails sectionDetails = buildSection();
+    private final String SECTION_ID_IS_OK = sectionDetails.getSectionId();
 
     @Autowired
     private WebTestClient client;
-    private final SectionDetails dto = buildSectionDetails();
+
     @MockBean
-    SectionServiceClient sectionServiceClient;
+    private SectionServiceClient sectionServiceClient;
 
-    private final String Section_ID_OKAY_UUID = dto.getSectionId();
     @Test
-    public void getASectionDetails() {
+    void getSectionBySectionId() {
 
-        when(sectionServiceClient.getSectionBySectionId(anyString())).thenReturn(Mono.just(dto));
+        when(sectionServiceClient.getSectionBySectionId(anyString())).thenReturn(Mono.just(sectionDetails));
 
-        //use web client to send request (get request) --> to(teachers/teacherId)
-        // act & assert
         client
                 .get()
-                .uri("/teachers/" + Section_ID_OKAY_UUID)
+                .uri("/sections/" + SECTION_ID_IS_OK)
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
                 .expectStatus().isOk()
                 .expectHeader().contentType(MediaType.APPLICATION_JSON)
-                .expectBody()
-                .jsonPath("$.sectionId").isEqualTo(dto.getSectionId())
-                .jsonPath("$.courseNumber").isEqualTo(dto.getCourseNumber())
-                .jsonPath("$.roomNumber").isEqualTo(dto.getRoomNumber());
+                .expectBody(SectionSummaryModel.class)
+                .value((dto) -> assertThat(dto.getCourseNumber()).isEqualTo(sectionDetails.getCourseNumber()));
 
-        Mockito.verify(sectionServiceClient, times(1))
-                .getSectionBySectionId(Section_ID_OKAY_UUID);
     }
 
-    private SectionDetails buildSectionDetails() {
+    @Test
+    void deleteSectionBySectionId() {
+
+        when(sectionServiceClient.deleteSection(anyString())).thenReturn(Mono.empty());
+
+        client
+                .delete()
+                .uri("/sections" + SECTION_ID_IS_OK)
+                .accept(MediaType.APPLICATION_JSON)
+                .exchange()
+                .expectStatus().is4xxClientError();
+
+    }
+
+    private SectionDetails buildSection() {
         return SectionDetails.builder()
                 .sectionId("48b0f8c1-c341-4130-b945-463b43cfc9de")
                 .courseNumber(101)
                 .roomNumber(201)
+                .teacherId(1111)
                 .build();
     }
 

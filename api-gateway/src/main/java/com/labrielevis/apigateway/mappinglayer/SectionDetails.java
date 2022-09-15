@@ -7,7 +7,6 @@ import lombok.*;
 @Data
 @ToString
 @NoArgsConstructor
-@AllArgsConstructor
 @Builder
 public class SectionDetails {
 
@@ -16,7 +15,8 @@ public class SectionDetails {
     private Integer roomNumber;
     private Integer teacherId;
 
-    public SectionDetails(Integer courseNumber, Integer roomNumber, Integer teacherId){
+    public SectionDetails(String sectionId, Integer courseNumber, Integer roomNumber, Integer teacherId){
+        this.sectionId = sectionId;
         this.courseNumber = courseNumber;
         this.roomNumber = roomNumber;
         this.teacherId = teacherId;
