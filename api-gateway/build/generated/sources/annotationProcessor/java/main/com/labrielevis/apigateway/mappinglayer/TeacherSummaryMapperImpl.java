@@ -5,8 +5,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-09-14T17:13:55-0400",
-    comments = "version: 1.5.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.5.jar, environment: Java 17.0.4.1 (Amazon.com Inc.)"
+    date = "2022-09-15T14:11:14-0400",
+    comments = "version: 1.5.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.5.jar, environment: Java 17.0.2 (Oracle Corporation)"
 )
 @Component
 public class TeacherSummaryMapperImpl implements TeacherSummaryMapper {
@@ -22,6 +22,7 @@ public class TeacherSummaryMapperImpl implements TeacherSummaryMapper {
         teacherSummaryModel.setFirstName( responseModel.getFirstName() );
         teacherSummaryModel.setLastName( responseModel.getLastName() );
         teacherSummaryModel.setEmail( responseModel.getEmail() );
+        teacherSummaryModel.setSectionId( responseModel.getSectionId() );
 
         return teacherSummaryModel;
     }
@@ -37,6 +38,7 @@ public class TeacherSummaryMapperImpl implements TeacherSummaryMapper {
         teacherDetails.firstName( summaryModel.getFirstName() );
         teacherDetails.lastName( summaryModel.getLastName() );
         teacherDetails.email( summaryModel.getEmail() );
+        teacherDetails.sectionId( summaryModel.getSectionId() );
 
         return teacherDetails.build();
     }
